@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Horarios</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/miLayout.css">
+</head>
+<body>
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+        <a class="navbar-brand" th:href="@{/bienvenida}">
+            <img src="imagenes/certus.png" class="img-fluid" alt="Responsive image" style="width: 100px;">
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/bienvenida}">CERTUS</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/profesor/listar}">Profesores</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/estudiantes/listar}">Estudiantes</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/cursos/listar}">Cursos</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/horarios/listar}">Horarios</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link"><i class="fa fa-search"></i></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link"><i class="fa fa-facebook"></i></a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false"><i class="fa fa-user"></i></a>
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
+                        <a class="dropdown-item" th:href="@{/verPerfil}">Perfil</a>
+                        <a class="dropdown-item" th:href="@{/logout}">Salir</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container mt-4">
+        <h1 class="mb-4 text-center">Lista de Horarios</h1>
+        <div class="text-center mb-4">
+            <a th:href="@{/horarios/nuevo}" class="btn btn-primary">Nuevo Horario</a>
+        </div>
+        <div class="table-responsive">
+            <table class="table table-bordered table-striped">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>ID</th>
+                        <th>ID Curso</th>
+                        <th>Día</th>
+                        <th>Hora Inicio</th>
+                        <th>Hora Fin</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="horario : ${horarios}">
+                        <td th:text="${horario.idHorario}"></td>
+                        <td th:text="${horario.idCurso}"></td>
+                        <td th:text="${horario.dia}"></td>
+                        <td th:text="${horario.horaInicio}"></td>
+                        <td th:text="${horario.horaFin}"></td>
+                        <td>
+                            <a th:href="@{/horarios/editar/{id}(id=${horario.idHorario})}" class="btn btn-warning btn-sm btn-custom">Editar</a>
+                            <form th:action="@{/horarios/delete/{id}(id=${horario.idHorario})}" method="post" style="display:inline;" onsubmit="return confirm('¿Estás seguro de que deseas eliminar este horario?');">
+                                <button type="submit" class="btn btn-danger btn-sm btn-custom">Eliminar</button>
+                            </form>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <footer class="footer bg-dark text-white mt-auto p-3 text-center">
+        <small>Copyright &copy; www.certus.edu.pe</small>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

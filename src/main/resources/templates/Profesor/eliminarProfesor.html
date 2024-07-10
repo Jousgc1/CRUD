@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Eliminar Profesor</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container mt-4">
+        <div class="text-center mb-4">
+            <h1>Eliminar Profesor</h1>
+        </div>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>DNI</th>
+                    <th>Primer Nombre</th>
+                    <th>Segundo Nombre</th>
+                    <th>Apellido Paterno</th>
+                    <th>Apellido Materno</th>
+                    <th>Teléfono</th>
+                    <th>Correo</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="profesor : ${listaProfesor}">
+                    <td th:text="${profesor.idProfesor}">1</td>
+                    <td th:text="${profesor.profesor_dni}">12345678</td>
+                    <td th:text="${profesor.primer_nombre}">Juan</td>
+                    <td th:text="${profesor.segundo_nombre}">Carlos</td>
+                    <td th:text="${profesor.apellido_paterno}">Perez</td>
+                    <td th:text="${profesor.apellido_materno}">Gomez</td>
+                    <td th:text="${profesor.telefono}">987654321</td>
+                    <td th:text="${profesor.correo}">juan@example.com</td>
+                    <td>
+                        <form th:action="@{/profesor/eliminar/{id}(id=${profesor.idProfesor})}" method="post" onsubmit="return confirm('¿Estás seguro de que quieres eliminar este profesor?');">
+                            <input type="hidden" name="_method" value="delete" />
+                            <button type="submit" class="btn btn-danger">Eliminar</button>
+                        </form>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <a th:href="@{/profesor/listar}" class="btn btn-secondary">Volver a la lista</a>
+    </div>
+</body>
+</html>

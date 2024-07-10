@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Editar Curso</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    <h1 class="card-title text-center">Editar Curso</h1>
+                </div>
+                <div class="card-body">
+                    <form th:action="@{/cursos/guardar}" th:object="${curso}" method="post">
+                        <input type="hidden" th:field="*{idCurso}" />
+                        <div class="form-group">
+                            <label for="nombre">Nombre:</label>
+                            <input type="text" id="nombre" th:field="*{cursoNombre}" class="form-control" />
+                        </div>
+                        <div class="form-group">
+                            <label for="descripcion">Descripción:</label>
+                            <input type="text" id="descripcion" th:field="*{cursoDescripcion}" class="form-control" />
+                        </div>
+                        <div class="form-group">
+                            <label for="profesorId">Profesor ID:</label>
+                            <input type="text" id="profesorId" th:field="*{profesorId}" class="form-control" />
+                        </div>
+                        <div class="form-group text-center">
+                            <button type="submit" class="btn btn-success">Guardar</button>
+                        </div>
+                    </form>
+                    <div class="form-group text-center">
+                        <a th:href="@{/cursos/listar}" class="btn btn-link">Volver a la lista</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Bootstrap JS and dependencies -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>

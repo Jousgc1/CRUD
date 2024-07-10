@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Crear Nuevo Horario</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    <h1 class="card-title text-center">Crear Nuevo Horario</h1>
+                </div>
+                <div class="card-body">
+                    <form th:action="@{/horarios/guardar}" th:object="${horario}" method="post">
+                        <div class="form-group">
+                            <label for="idCurso">ID Curso:</label>
+                            <input type="text" id="idCurso" th:field="*{idCurso}" class="form-control" />
+                        </div>
+                        <div class="form-group">
+                            <label for="dia">Día:</label>
+                            <input type="text" id="dia" th:field="*{dia}" class="form-control" />
+                        </div>
+                        <div class="form-group">
+                            <label for="horaInicio">Hora Inicio:</label>
+                            <input type="text" id="horaInicio" name="horaInicio" placeholder="HH:mm:ss" class="form-control" />
+                        </div>
+                        <div class="form-group">
+                            <label for="horaFin">Hora Fin:</label>
+                            <input type="text" id="horaFin" name="horaFin" placeholder="HH:mm:ss" class="form-control" />
+                        </div>
+                        <div class="form-group text-center">
+                            <button type="submit" class="btn btn-success">Guardar</button>
+                        </div>
+                    </form>
+                    <div class="form-group text-center">
+                        <a th:href="@{/horarios/listar}" class="btn btn-link">Volver a la lista</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Bootstrap JS and dependencies -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>

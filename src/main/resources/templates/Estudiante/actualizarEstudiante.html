@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Actualizar Estudiante</title>
+    <link rel="stylesheet" href="/path/to/your/styles.css" />
+</head>
+<body>
+    <h1>Actualizar Estudiante</h1>
+    <form action="#" th:action="@{/estudiantes/editar}" th:object="${estudiante}" method="post">
+        <input type="hidden" th:field="${estudiante.idEstudiante}" />
+        
+        <label for="estudianteDni">DNI:</label>
+        <input type="text" id="estudianteDni" th:field="${estudiante.estudianteDni}" />
+        
+        <label for="primerNombre">Primer Nombre:</label>
+        <input type="text" id="primerNombre" th:field="${estudiante.primerNombre}" />
+        
+        <label for="segundoNombre">Segundo Nombre:</label>
+        <input type="text" id="segundoNombre" th:field="${estudiante.segundoNombre}" />
+        
+        <label for="apellidoPaterno">Apellido Paterno:</label>
+        <input type="text" id="apellidoPaterno" th:field="${estudiante.apellidoPaterno}" />
+        
+        <label for="apellidoMaterno">Apellido Materno:</label>
+        <input type="text" id="apellidoMaterno" th:field="${estudiante.apellidoMaterno}" />
+        
+        <label for="fechaNacimiento">Fecha de Nacimiento:</label>
+        <input type="text" id="fechaNacimiento" th:field="${estudiante.fechaNacimiento}" />
+        
+        <label for="direccion">Dirección:</label>
+        <input type="text" id="direccion" th:field="${estudiante.direccion}" />
+        
+        <label for="curso">Curso:</label>
+        <input type="text" id="curso" th:value="${estudiante.curso.cursoNombre}" readonly />
+        <input type="hidden" th:field="${estudiante.curso.idCurso}" />
+
+        <button type="submit">Guardar</button>
+    </form>
+    <a href="/estudiantes/listar">Volver al Listado</a>
+</body>
+</html>

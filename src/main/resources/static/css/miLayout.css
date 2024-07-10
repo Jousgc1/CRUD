@@ -1,0 +1,26 @@
+/* Ajustes generales */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.navbar-brand img {
+    width: 100px;
+}
+
+#nav-link-custom {
+    font-weight: bold;
+}
+
+#seccion1 {
+    background-color: #f8f9fa;
+    padding: 50px 0;
+    text-align: center;
+}
+
+.footer {
+    background-color: #343a40;
+    color: #fff;
+    padding: 20px 0;
+}

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="ISO-8859-1">
+    <title>Crear-Nueva-Profesor</title>
+     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div align="center">
+        <h1>Nuevo-Profesor</h1>
+        <form action="#" th:action="@{/profesor/guardar}" th:object="${profesor}" method="post">
+            <table border="2" cellpadding="10">
+                <tr>
+                    <td>dni_profesor :</td>
+                    <td><input type="text" th:field="*{profesor_dni}"></td>
+                </tr>
+                <tr>
+                    <td>primer_nombre :</td>
+                    <td><input type="text" th:field="*{primer_nombre}"></td>
+                </tr>
+                <tr>
+                    <td>segundo_nombre :</td>
+                    <td><input type="text" th:field="*{segundo_nombre}"></td>
+                </tr>
+                <tr>
+                    <td>apellido_paterno :</td>
+                    <td><input type="text" th:field="*{apellido_paterno}"></td>
+                </tr>
+                <tr>
+                    <td>apellido_materno:</td>
+                    <td><input type="text" th:field="*{apellido_materno}"></td>
+                </tr>
+                <tr>
+                    <td>telefono:</td>
+                    <td><input type="text" th:field="*{telefono}"></td>
+                </tr>
+                <tr>
+                    <td>correo :</td>
+                    <td><textarea rows="20" cols="80" th:field="*{correo}"></textarea></td>
+                </tr>
+                <tr>
+                    <td colspan="2"><button type="submit">Save</button></td>
+                </tr>
+            </table>
+        </form>
+    </div>
+</body>
+</html>

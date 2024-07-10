@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Actualizar Profesor</title>
+    <!-- Enlace a Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Puedes agregar aquí tus archivos CSS adicionales -->
+</head>
+<body>
+    <div class="container mt-4">
+        <h1>Actualizar Profesor</h1>
+
+        <form th:action="@{/profesor/actualizar/{id}(id=${profesor.idProfesor})}" th:object="${profesor}" method="post">
+            <!-- Campo oculto para enviar el ID del profesor -->
+            <input type="hidden" th:field="*{idProfesor}" />
+
+            <div class="form-group">
+                <label for="dni">DNI:</label>
+                <input type="text" id="dni" class="form-control" th:field="*{Profesor_dni}" placeholder="DNI" />
+            </div>
+
+            <div class="form-group">
+                <label for="primerNombre">Primer Nombre:</label>
+                <input type="text" id="primerNombre" class="form-control" th:field="*{primer_nombre}" placeholder="Primer Nombre" />
+            </div>
+
+            <div class="form-group">
+                <label for="segundoNombre">Segundo Nombre:</label>
+                <input type="text" id="segundoNombre" class="form-control" th:field="*{segundo_nombre}" placeholder="Segundo Nombre" />
+            </div>
+
+            <div class="form-group">
+                <label for="apellidoPaterno">Apellido Paterno:</label>
+                <input type="text" id="apellidoPaterno" class="form-control" th:field="*{apellido_paterno}" placeholder="Apellido Paterno" />
+            </div>
+
+            <div class="form-group">
+                <label for="apellidoMaterno">Apellido Materno:</label>
+                <input type="text" id="apellidoMaterno" class="form-control" th:field="*{apellido_materno}" placeholder="Apellido Materno" />
+            </div>
+
+            <div class="form-group">
+                <label for="telefono">Teléfono:</label>
+                <input type="text" id="telefono" class="form-control" th:field="*{telefono}" placeholder="Teléfono" />
+            </div>
+
+            <div class="form-group">
+                <label for="correo">Correo:</label>
+                <input type="text" id="correo" class="form-control" th:field="*{correo}" placeholder="Correo" />
+            </div>
+
+            <button type="submit" class="btn btn-primary">Actualizar</button>
+            <a href="#" th:href="@{/profesor/listar}" class="btn btn-secondary">Cancelar</a>
+        </form>
+    </div>
+
+    <!-- Enlace a Bootstrap JS y dependencias -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
